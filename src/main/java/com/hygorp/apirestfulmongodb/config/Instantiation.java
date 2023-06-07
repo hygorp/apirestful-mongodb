@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.hygorp.apirestfulmongodb.domain.Post;
 import com.hygorp.apirestfulmongodb.domain.User;
+import com.hygorp.apirestfulmongodb.dto.AuthorDTO;
 import com.hygorp.apirestfulmongodb.repositories.PostRepository;
 import com.hygorp.apirestfulmongodb.repositories.UserRepository;
 
@@ -33,8 +34,8 @@ public class Instantiation implements CommandLineRunner{
 		
 		userRepository.saveAll(Arrays.asList(maria, alex, bob));
 		
-		Post post1 = new Post(null, Instant.now(), "Hello World!", "My first post, hello!", maria);
-		Post post2 = new Post(null, Instant.now(), "Hello!", "My second post, hello!", maria);
+		Post post1 = new Post(null, Instant.now(), "Hello World!", "My first post, hello!", new AuthorDTO(maria));
+		Post post2 = new Post(null, Instant.now(), "Hello!", "My second post, hello!", new AuthorDTO(maria));
 		
 		postRepository.saveAll(Arrays.asList(post1, post2));
 		
